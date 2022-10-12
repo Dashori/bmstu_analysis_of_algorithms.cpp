@@ -1,0 +1,11 @@
+*.exe
+*.out
+*.o
+*.vscode
+
+*.aux
+*.log
+*.toc
+*.gz
+*.bbl
+*.blg
