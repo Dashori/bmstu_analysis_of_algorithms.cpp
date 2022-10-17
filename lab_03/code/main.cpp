@@ -1,8 +1,10 @@
 #include <cstring>
+#include <cmath>
 
 #include "array.h"
 #include "sorting.h"
 #include "time.h"
+#include <climits>
 
 int main()
 {
@@ -22,18 +24,9 @@ int main()
 
     uint64_t start, end;
 
-    
-
     cout << "\nСортировка слиянием:\n";
     start = tick();
-    mergeSort(array, buffer, 0, size - 1);
-    end = tick();
-    cout << "Время: " << end - start << " (в тиках)\n";
-    printArray(array, size);
-
-    cout << "\nСортировка слиянием:\n";
-    start = tick();
-    mergeSort(array, 0, size - 1);
+    array = mergeSort(array, buffer, 0, size - 1);
     end = tick();
     cout << "Время: " << end - start << " (в тиках)\n";
     printArray(array, size);
@@ -44,20 +37,41 @@ int main()
     end = tick();
     cout << "Время: " << end - start << " (в тиках)\n";
     printArray(array1, size);
-    
-    // if (size & (size - 1) != 0 )
-    // {
-    //     cout << "Битонная сортировка может работать только с массивами,\n размеры которых являются степенью 2.\n";
-    //     return 0;
-    // }
 
-    cout << "\nБитонная сортировка:\n";
-    start = tick();
-    bitonic_sort_iter(array2, size);
-    // bitonicSort(array2, 0, size, 1);
-    end = tick();
-    cout << "Время: " << end - start << " (в тиках)\n";
-    printArray(array2, size);
+
+    int newSize;
+    
+    if ((size & (size - 1)) != 0 )
+    {
+        newSize = log2(size) + 1;
+        newSize = pow(2, newSize);
+
+        int *newArray = new int[newSize];
+
+        for (int i = 0; i < newSize; i++)
+        {
+            if (i < size)
+                newArray[i] = array2[i];
+            else
+                newArray[i] = INT_MAX;
+        }
+
+        start = tick();
+        bitonicSort(newArray, 0, newSize, 1);
+        end = tick();
+        cout << "Время: " << end - start << " (в тиках)\n";
+        printArray(newArray, size);
+
+        delete[] newArray;
+    }
+    else
+    {
+        
+        bitonicSort(array2, 0, size, 1);
+        end = tick();
+        cout << "Время: " << end - start << " (в тиках)\n";
+        printArray(array2, size);
+    }
 
     delete[] array;
     delete[] array1;
