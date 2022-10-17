@@ -7,12 +7,16 @@
 #include "sorting.h"
 #include "time.h"
 
+#include <iostream>
+#include <fstream>
+
 #define REPEAT 1000
 void testing();
 
 int main()
 {
     testing();
+
 
     return 0;
 }
@@ -40,9 +44,10 @@ string createString(int n)
 
 void testing()
 {   
+    ofstream out("out.txt");
     int constMy = 1;
 
-    for (int i = 2; i <= 66000; i*=2)
+    for (int i = 2; i <= 30; i++)
     {
         long long int t1 = 0, t2 = 0, t3 = 0;
 
@@ -55,7 +60,7 @@ void testing()
 
             for (int k = 0; k < i; k++)
             {
-                int num = Random(-10000, 10000);
+                int num = Random(-INT_MAX, INT_MAX);
 
                 array[k] = num;
                 array1[k] = num;
@@ -109,7 +114,8 @@ void testing()
             delete[] array2;
         }
 
-        cout << i << " " << t1/REPEAT << " " << t2/REPEAT << " " << t3/REPEAT << "\n" << std::flush;
+        out << i << " " << t1/REPEAT << " " << t2/REPEAT << " " << t3/REPEAT << "\n" << std::flush;
+
     }
 }
 

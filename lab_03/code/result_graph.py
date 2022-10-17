@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plot
 
-file = open("resultDegree.txt", "r") 
+file = open("forLesha1.txt", "r") 
 
 index = []
 merge = []
@@ -32,5 +32,5 @@ plot.plot(index, bitton, color = "green", label = "Битонная")
 
 plot.legend(loc="upper left")
 
-plot.savefig("resultDegree.png")
+plot.savefig("forLesha.png")
 
