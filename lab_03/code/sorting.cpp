@@ -13,16 +13,15 @@ int *mergeSort(int *up, int *down, int left, int right)
 
     int middle = left + (right - left) / 2;
 
-    int *lBuff = mergeSort(up, down, left, middle);
-    int *rBuff = mergeSort(up, down, middle + 1, right);
+    int *lBuffer = mergeSort(up, down, left, middle);
+    int *rBuffer = mergeSort(up, down, middle + 1, right);
 
-    // int *target = lBuff;
+    int *target;
 
-    // if (target == up)
-    //     target = down;
-    // else
-    //     target = up;
-    int *target = lBuff == up ? down : up;
+    if (lBuffer == up)
+        target = down;
+    else
+        target = up;
 
     int lIndex = left, rIndex = middle + 1;
 
@@ -30,26 +29,18 @@ int *mergeSort(int *up, int *down, int left, int right)
     {
         if (lIndex <= middle && rIndex <= right)
         {
-            if (lBuff[lIndex] < rBuff[rIndex])
-            {
-                target[i] = lBuff[lIndex];
-                lIndex++;
-            }
+            if (lBuffer[lIndex] < rBuffer[rIndex])
+                target[i] = lBuffer[lIndex++];
             else
-            {
-                target[i] = rBuff[rIndex];
-                rIndex++;
-            }
+                target[i] = rBuffer[rIndex++];
         }
         else if (lIndex <= middle)
         {
-            target[i] = lBuff[lIndex];
-            lIndex++;
+            target[i] = lBuffer[lIndex++];
         }
         else
         {
-            target[i] = rBuff[rIndex];
-            rIndex++;
+            target[i] = rBuffer[rIndex++];
         }
     }
 
@@ -63,32 +54,11 @@ void countingSort(int *array, int size)
     int minEl = *min_element(array , array + size);
     int maxEl = *max_element(array, array + size);
 
-    if (minEl >= 0)
-    {
-        int newSize = maxEl + 1;
-
-        int *newArray = new int[newSize]();
-
-        for (int i = 0; i < size; i++)
-            newArray[array[i]]++;
-
-        int index = 0;
-
-        for (int i = 0; i < newSize; i++)
-            for (int j = 0; j < newArray[i]; j++)
-                array[index++] = i;
-
-        delete[] newArray;
-        
-        return;
-    }
-
     int newSize = maxEl - minEl + 1;
-
     int *newArray = new int[newSize]();
 
     for (int i = 0; i < size; i++)
-        newArray[array[i] - minEl]++;;
+        newArray[array[i] - minEl]++;
 
     int index = 0;
 
@@ -96,7 +66,6 @@ void countingSort(int *array, int size)
         for (int j = 0; j < newArray[i]; j++)
             array[index++] = i + minEl;
 
-    
     delete[] newArray;
 }
 
@@ -107,14 +76,14 @@ void bitonicMerge(int *array, int start, int end, int flag)
 {
     if (end > 1)
     {
-        int k = end / 2;
+        int middle = end / 2;
 
-        for (int i = start; i < start + k; i++)
-            if (flag == (array[i] > array[i + k]))
-                swap(array[i], array[i + k]);
+        for (int i = start; i < start + middle; i++)
+            if (flag == (array[i] > array[i + middle]))
+                swap(array[i], array[i + middle]);
 
-        bitonicMerge(array, start, k, flag);
-        bitonicMerge(array, start + k, k, flag);
+        bitonicMerge(array, start, middle, flag);
+        bitonicMerge(array, start + middle, middle, flag);
     }
 }
 
@@ -122,10 +91,10 @@ void bitonicSort(int *array, int start, int end, int flag)
 {
     if (end > 1)
     {
-        int k = end / 2;
+        int middle = end / 2;
 
-        bitonicSort(array, start, k, 0);
-        bitonicSort(array, start + k, k, 1);
+        bitonicSort(array, start, middle, 0);
+        bitonicSort(array, start + middle, middle, 1);
         
         bitonicMerge(array, start, end, flag);
     }
