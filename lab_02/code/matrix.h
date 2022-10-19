@@ -10,14 +10,17 @@ class Matrix
 {
     public:
         Matrix() = default;
-        Matrix(vector<vector<int>> tempArray, int tempRows, int tempColumns);
         Matrix(int tempRows, int tempColumns);
+        Matrix(int tempRows, int tempColumns, vector<vector<int>> tempArray);
+        
+        int inputSizes();
+        int allocateMatrix();
+        int fillMatrix();
 
         int getRows() { return rows; };
         int getColumns() { return columns; };
-        
+        vector<vector<int>> getArray() { return array; };
 
-        int inputMatrix();
         void printMatrix();
 
     private:
