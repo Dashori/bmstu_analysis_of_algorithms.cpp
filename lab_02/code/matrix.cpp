@@ -18,14 +18,16 @@ Matrix::Matrix(int tempRows, int tempColumns) :
 int Matrix::inputSizes()
 {
     cout << "Введите количество строк: ";
-    cin >> rows;
 
-    cout << "Введите количество столбцов: ";
-    cin >> columns;
-
-    if (rows < 1 || columns < 1)
+    if (scanf("%d", &rows) != 1 || rows < 1)
     {
-        cout << "Размеры матрицы должны быть натуральными\n";
+        cout << "Количество строк должно быть натуральным числом";
+        return 1;
+    }
+
+    if (scanf("%d", &columns) != 1 || columns < 1)
+    {
+        cout << "Количество столбцов должно быть натуральным числом";
         return 1;
     }
 
@@ -44,12 +46,15 @@ int Matrix::allocateMatrix()
 
 int Matrix::fillMatrix()
 {
-    cout << "Введите элементы матрицы:\n";
+    cout << "Введите элементы матрицы:" << endl;
 
     for (int i = 0; i < rows; i++)
         for (int j = 0; j < columns; j++)
             if (scanf("%d", &array[i][j]) != 1)
+            {
+                cout << "Неверный элемент матрицы." << endl;
                 return 1;
+            }
     
     return 0;    
 }

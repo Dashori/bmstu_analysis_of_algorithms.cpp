@@ -12,6 +12,7 @@ class MultiplicatoinMatrix
         Matrix standartMultiplication();
         Matrix grapeMultiplication(); // оригинально я алгоритм винограда назвала да
         Matrix grapeMultiplicationPro();
+        Matrix grapeMultiplicationPro2();
 
     private:
         Matrix firstMatrix;
