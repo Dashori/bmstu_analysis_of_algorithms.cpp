@@ -11,11 +11,19 @@ class MultiplicatoinMatrix
 
         Matrix standartMultiplication();
         Matrix grapeMultiplication(); // оригинально я алгоритм винограда назвала да
+        Matrix grapeMultiplicationPro();
 
     private:
         Matrix firstMatrix;
         Matrix secondMatrix;
 
+        vector<vector<int>> first;
+        int firstRows;
+        int firstColumns;
+
+        vector<vector<int>> second; 
+        int secondRows;
+        int secondColumns;
 };  
 
 

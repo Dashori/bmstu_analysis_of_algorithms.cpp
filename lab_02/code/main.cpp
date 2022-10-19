@@ -1,7 +1,10 @@
 #include "matrix.h"
 #include "multiplicationMatrix.h"
 
+#include <chrono>
+
 using namespace std;
+using namespace std::chrono;
 
 int inputMatrix(Matrix &tempMatrix)
 {
@@ -49,13 +52,31 @@ int main()
 
     MultiplicatoinMatrix temp(first, second);
 
+    auto start = steady_clock::now();
     Matrix resultBasic = temp.standartMultiplication();
-    Matrix resultGrape = temp.grapeMultiplication();
+    auto end = steady_clock::now();
+    auto elapsed = duration_cast<microseconds>(end - start);
 
-    cout << "\n\n\n";
+    cout << "Стандартное умножение.\nВремя: " << elapsed.count() << " (микросекунды)\n";
+    cout << "Матрица:\n";
     resultBasic.printMatrix();
-    cout << " \n";
+
+    start = steady_clock::now();
+    Matrix resultGrape = temp.grapeMultiplication();
+    end = steady_clock::now();
+    elapsed = duration_cast<microseconds>(end - start);
+    cout << "Алгоритм Винограда.\nВремя: " << elapsed.count() << " (микросекунды)\n";
+    cout << "Матрица:\n";
     resultGrape.printMatrix();
+
+    start = steady_clock::now();
+    Matrix resultGrapePro = temp.grapeMultiplicationPro();
+    end = steady_clock::now();
+    elapsed = duration_cast<microseconds>(end - start);
+
+    cout << "Оптимизированный алгоритм Винограда.\nВремя: " << elapsed.count() << " (микросекунды)\n";
+    cout << "Матрица:\n";
+    resultGrapePro.printMatrix();
 
     return 0;
 }
