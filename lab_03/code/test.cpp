@@ -2,21 +2,23 @@
 #include <iterator>
 #include <cstring>
 #include <cmath>
+#include <chrono>
 
 #include "array.h"
 #include "sorting.h"
-#include "time.h"
 
 #include <iostream>
 #include <fstream>
 
-#define REPEAT 1000
+#define REPEAT 2000
+
+using namespace std::chrono;
+
 void testing();
 
 int main()
 {
     testing();
-
 
     return 0;
 }
@@ -44,12 +46,15 @@ string createString(int n)
 
 void testing()
 {   
-    ofstream out("out.txt");
+    ofstream out("resultDegree.txt");
     int constMy = 1;
 
-    for (int i = 2; i <= 30; i++)
+    for (int i = 1; i <= 66000; i*=2)
     {
-        long long int t1 = 0, t2 = 0, t3 = 0;
+        auto start = high_resolution_clock::now();
+        auto res1 = duration_cast<microseconds>(start - start);
+        auto res2 = duration_cast<microseconds>(start - start);
+        auto res3 = duration_cast<microseconds>(start - start);
 
         for (int j = 0; j < REPEAT; j++)
         {
@@ -67,21 +72,19 @@ void testing()
                 array2[k] = num;
             }
 
-            uint64_t start, end;
-
-            start = tick();
+            auto start = high_resolution_clock::now();
             mergeSort(array2, buffer, 0, i - 1);
-            end = tick();
-            t1 += end - start;
+            auto end = high_resolution_clock::now();
+            res1 += duration_cast<microseconds>(end - start);
 
-            start = tick();
+            start = high_resolution_clock::now();
             countingSort(array1, i);
-            end = tick();
-            t2 += end - start;
+            end = high_resolution_clock::now();
+            res2 += duration_cast<microseconds>(end - start);
 
             int size = i;
 
-            start = tick(); 
+            start = high_resolution_clock::now();
 
             if ((size & (size - 1)) != 0)
             {
@@ -105,8 +108,8 @@ void testing()
                 bitonicSort(array, 0, size, 1);
             }
 
-            end = tick();
-            t3 += end - start;
+            end = high_resolution_clock::now();
+            res3 += duration_cast<microseconds>(end - start);
 
 
             delete[] array;
@@ -114,7 +117,7 @@ void testing()
             delete[] array2;
         }
 
-        out << i << " " << t1/REPEAT << " " << t2/REPEAT << " " << t3/REPEAT << "\n" << std::flush;
+        out << i << " " << res1.count()/REPEAT << " " << res2.count()/REPEAT << " " << res3.count()/REPEAT << "\n" << std::flush;
 
     }
 }

@@ -1,10 +1,12 @@
 #include <cstring>
 #include <cmath>
+#include <chrono>
 
 #include "array.h"
 #include "sorting.h"
-#include "time.h"
 #include <climits>
+
+using namespace std::chrono;
 
 int main()
 {
@@ -22,20 +24,20 @@ int main()
     memcpy(array1, array, size * sizeof(int));
     memcpy(array2, array, size * sizeof(int));
 
-    uint64_t start, end;
-
     cout << "\nСортировка слиянием:\n";
-    start = tick();
+    auto start = high_resolution_clock::now();
     array = mergeSort(array, buffer, 0, size - 1);
-    end = tick();
-    cout << "Время: " << end - start << " (в тиках)\n";
+    auto end = high_resolution_clock::now();
+    auto elapsed = duration_cast<microseconds>(end - start);
+    cout << "Время: " << elapsed.count() << " (микросекунды)\n";
     printArray(array, size);
 
-    cout << "Сортировка посчетом:\n";
-    start = tick();
+    cout << "Сортировка подсчетом:\n";
+    start = high_resolution_clock::now();
     countingSort(array1, size);
-    end = tick();
-    cout << "Время: " << end - start << " (в тиках)\n";
+    end = high_resolution_clock::now();
+    elapsed = duration_cast<microseconds>(end - start);
+    cout << "Время: " << elapsed.count() << " (микросекунды)\n";
     printArray(array1, size);
 
 
@@ -55,21 +57,24 @@ int main()
             else
                 newArray[i] = INT_MAX;
         }
-
-        start = tick();
+        cout << "Битонная сортировка:\n";
+        start = high_resolution_clock::now();
         bitonicSort(newArray, 0, newSize, 1);
-        end = tick();
-        cout << "Время: " << end - start << " (в тиках)\n";
+        end = high_resolution_clock::now();
+        elapsed = duration_cast<microseconds>(end - start);
+        cout << "Время: " << elapsed.count() << " (микросекунды)\n";
         printArray(newArray, size);
 
         delete[] newArray;
     }
     else
     {
-        
+        cout << "Битонная сортировка:\n";
+        start = high_resolution_clock::now();
         bitonicSort(array2, 0, size, 1);
-        end = tick();
-        cout << "Время: " << end - start << " (в тиках)\n";
+        end = high_resolution_clock::now();
+        elapsed = duration_cast<microseconds>(end - start);
+        cout << "Время: " << elapsed.count() << " (микросекунды)\n";
         printArray(array2, size);
     }
 

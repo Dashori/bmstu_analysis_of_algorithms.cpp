@@ -81,7 +81,6 @@ void countingSort(int *array, int size)
     delete[] newArray;
 }
 
-
 // bitonic
 
 void bitonicMerge(int *array, int start, int end, int flag)

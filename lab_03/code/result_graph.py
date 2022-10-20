@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plot
 
-file = open("forLesha1.txt", "r") 
+file = open("resultDegree.txt", "r") 
 
 index = []
 merge = []
@@ -22,7 +22,7 @@ while True:
     bitton.append(numbers[3])
 
 
-plot.ylabel("Время(в тиках)")
+plot.ylabel("Время(в микросекундах)")
 plot.xlabel("Размер массива")
 plot.grid(True)
 
@@ -32,5 +32,5 @@ plot.plot(index, bitton, color = "green", label = "Битонная")
 
 plot.legend(loc="upper left")
 
-plot.savefig("forLesha.png")
+plot.savefig("resultDegree.png")
 
