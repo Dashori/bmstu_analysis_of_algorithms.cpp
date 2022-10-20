@@ -15,12 +15,17 @@ Matrix::Matrix(int tempRows, int tempColumns) :
         array[i].resize(columns);    
 }
 
+int Random(int min, int max) 
+{
+    return min + rand() % (max - min);
+}
+
 void Matrix::fillRandom()
 {
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < columns; j++)
-            array[i][j] = 
+            array[i][j] = Random(-1000, 1000);
     }
 
 }
@@ -34,6 +39,8 @@ int Matrix::inputSizes()
         cout << "Количество строк должно быть натуральным числом";
         return 1;
     }
+
+    cout << "Введите количество столбцов: ";
 
     if (scanf("%d", &columns) != 1 || columns < 1)
     {

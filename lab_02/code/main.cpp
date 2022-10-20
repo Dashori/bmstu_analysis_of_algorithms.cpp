@@ -45,42 +45,45 @@ int main()
 
     MultiplicatoinMatrix temp(first, second);
 
-    auto start = steady_clock::now();
+    auto start = high_resolution_clock::now();
     Matrix resultBasic = temp.standartMultiplication();
-    auto end = steady_clock::now();
+    auto end = high_resolution_clock::now();
     auto elapsed = duration_cast<microseconds>(end - start);
     cout << "Стандартное умножение." << endl;
     cout << "Время: " << elapsed.count() << " (микросекунды)" << endl;
     cout << "Матрица:" << endl;
     resultBasic.printMatrix();
 
-    start = steady_clock::now();
+    start = high_resolution_clock::now();
     Matrix resultGrape = temp.grapeMultiplication();
-    end = steady_clock::now();
+    end = high_resolution_clock::now();
     elapsed = duration_cast<microseconds>(end - start);
     cout << "Алгоритм Винограда." << endl;
     cout << "Время: " << elapsed.count() << " (микросекунды)" << endl;
     cout << "Матрица:" << endl;
     resultGrape.printMatrix();
 
-    start = steady_clock::now();
+    start = high_resolution_clock::now();
     Matrix resultGrapePro = temp.grapeMultiplicationPro();
-    end = steady_clock::now();
+    end = high_resolution_clock::now();
     elapsed = duration_cast<microseconds>(end - start);
     cout << "Оптимизированный алгоритм Винограда." << endl;
     cout << "Время: " << elapsed.count() << " (микросекунды)" << endl;
     cout << "Матрица:" << endl;
     resultGrapePro.printMatrix();
 
-
-    start = steady_clock::now();
+    start = high_resolution_clock::now();
     Matrix resultGrapePro2= temp.grapeMultiplicationPro2();
-    end = steady_clock::now();
+    end = high_resolution_clock::now();
     elapsed = duration_cast<microseconds>(end - start);
     cout << "Оптимизированный дважды алгоритм Винограда." << endl;
     cout << "Время: " << elapsed.count() << " (микросекунды)" << endl;
     cout << "Матрица:" << endl;
     resultGrapePro2.printMatrix();
+
+//     auto now = system_clock::now();
+// time_t now_t = system_clock::to_time_t(now);
+// auto now2 = system_clock::from_time_t(now_t);
 
     return 0;
 }
