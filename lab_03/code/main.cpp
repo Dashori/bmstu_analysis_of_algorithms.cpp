@@ -31,7 +31,7 @@ int main()
     cout << "Время: " << end - start << " (в тиках)\n";
     printArray(array, size);
 
-    cout << "\nСортировка посчетом:\n";
+    cout << "Сортировка посчетом:\n";
     start = tick();
     countingSort(array1, size);
     end = tick();
