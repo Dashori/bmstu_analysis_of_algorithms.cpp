@@ -17,6 +17,8 @@ class Matrix
         int allocateMatrix();
         int fillMatrix();
 
+        void fillRandom();
+
         int getRows() { return rows; };
         int getColumns() { return columns; };
         vector<vector<int>> getArray() { return array; };

@@ -18,5 +18,11 @@ int main()
     auto end = steady_clock::now();
     auto elapsed = duration_cast<microseconds>(end - start);
 
+
+    for (int i = 0; i < 1000; i += 100)
+    {
+        
+    }
+
     return 0;
 }

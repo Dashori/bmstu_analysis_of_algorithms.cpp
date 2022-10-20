@@ -15,6 +15,16 @@ Matrix::Matrix(int tempRows, int tempColumns) :
         array[i].resize(columns);    
 }
 
+void Matrix::fillRandom()
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+            array[i][j] = 
+    }
+
+}
+
 int Matrix::inputSizes()
 {
     cout << "Введите количество строк: ";
