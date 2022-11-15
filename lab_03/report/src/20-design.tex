@@ -32,13 +32,19 @@
 
 Для последующего вычисления трудоемкости необходимо ввести модель вычислений.
 
-Операции из списка (\ref{for:opers}) имеют трудоемкость 1:
+Операции из списка (\ref{for:opers}) имеют трудоемкость 1.
 \begin{equation}
 	\label{for:opers}
-	=, +=, -=, +, -, *, /, \%, ==, !=, <, >, <=, >=, [], ++, {-}-
+	=, +=, -=, +, -, ==, !=, <, >, <=, >=, [], ++, {-}-
 \end{equation}
 
-Трудоемкость оператора выбора \code{if условие then A else B} рассчитывается как:
+Операции из списка (\ref{for:opers2}) имеют трудоемкость 2.
+\begin{equation}
+	\label{for:opers2}
+	*, /, \%
+\end{equation}
+
+Трудоемкость оператора выбора \code{if условие then A else B} рассчитывается по формуле (\ref{for:if}):
 \begin{equation}
 	\label{for:if}
 	f_{if} = f_{\text{условия}} +
@@ -59,11 +65,9 @@
 \section{Трудоемкость алгоритмов}
 
 Далее размер массива обозначается как $size$.
-
+\pagebreak
 \subsection{Алгоритм сортировки подсчетом}
-
 Трудоемкость алгоритма сортировки подсчетом состоит из:
-
 \begin{itemize}
 	\item трудоемкость поиска минимального элемента в массиве:
 	\begin{equation}
@@ -110,7 +114,7 @@
 		f_{\text{суммарная}} = 2 + newSize \cdot (5 + 7 \cdot newArray[i]) 
 	\end{equation}
 \end{itemize}
-
+\pagebreak
 Трудоёмкость в лучшем случае (массив отсортирован, все элементы совпадают, диапазон значений не превышает размер массива):
 \begin{equation}
 	\label{best_counting}
@@ -123,7 +127,7 @@
 	f_{\text{худший}} = 16 + 20 \cdot size + 16 \cdot newSize \approx size + newSize
 \end{equation}
 
-Трудоемкость в худшем и лучшем случае совпадает и равна $O(size + newSize)$, где $newSize$ -- диапазон значений элементов массива.
+Трудоемкость в худшем и лучшем случае равна $O(size~+~newSize)$, где $newSize$ -- диапазон значений элементов массива.
 
 \subsection{Алгоритм битонной сортировки}
 
@@ -161,22 +165,21 @@
 
 Трудоёмкость в лучшем случае (массив отсортирован):
 \begin{equation}
-	\begin{multlined}
+	\begin{array}{cc}
 		f_{\text{лучший}} = (log_2{(size)})^2  \cdot (4 + (3 + 5) \cdot (start + size / 2)) \approx \\ size \cdot (log_2{(size)})^2 = O(size \cdot (log_2{(size)})^2)              
-	\end{multlined}
+	\end{array}
 \end{equation}
 
 Трудоёмкость в худшем случае (массив отсортирован в обратном порядке):
 \begin{equation}
-	\begin{multlined}
-		f_{\text{худший}} = (log_2{(size)})^2  \cdot (4 + (3 + 5 + 9) \cdot (start + size / 2)) \approx \\ size \cdot (log_2{(size)})^2 = O(size \cdot (log_2{(size)})^2)              
-	\end{multlined}
+	\begin{array}{cc}
+		f_{\text{худший}} = (log_2{(size)})^2  \cdot (4 + (3 + 5 + 9) \cdot (start + size / 2)) \approx  \\ size \cdot (log_2{(size)})^2 = O(size \cdot (log_2{(size)})^2)              
+	\end{array}
 \end{equation}
 
-Трудоемкость в худшем и лучшем случае совпадает и равна $O(size \cdot (log_2{(size)})^2)$. Заполнение массива фиктивными элементами до размерности степени двойки не влияет на асимптотику.
+Трудоемкость в худшем и лучшем случае равна $O(size \cdot (log_2{(size)})^2)$. Заполнение массива фиктивными элементами до размерности степени двойки не влияет на асимптотику.
 
 \subsection{Алгоритм сортировки слиянием}
-
 Трудоемкость алгоритма сортировки слиянием может быть найдена аналогичным образом, как и в битонной сортировке. Она состоит из:
 
 \begin{itemize}
@@ -192,22 +195,23 @@
 		f_{\text{соединение}} = 2 + size \cdot (3 + \begin{cases}
 			4, & \text{в лучшем случае},\\
 			10, & \text{в худшем случае}.\\
-		\end{cases})
+		\end{cases}
 	\end{equation}
 \end{itemize}
 
 Трудоёмкость в лучшем случае (массив отсортирован):
 \begin{equation}
-	\begin{multlined}
-		f_{\text{лучший}} = log_2(size) \cdot (2 + size \cdot 7) \approx  size \cdot log_2(size) = O(size \cdot log_2(size))  
-	\end{multlined}
+	\begin{array}{cc}
+		f_{\text{лучший}} = log_2(size) \cdot (2 + size \cdot 7) \approx  size \cdot log_2(size) =\\ O(size \cdot log_2(size))  
+	\end{array}
 \end{equation}
+\pagebreak
 
 Трудоёмкость в худшем случае (массив отсортирован в обратном порядке):
 \begin{equation}
-	\begin{multlined}
-		f_{\text{худший}} = log_2(size) \cdot (2 + size \cdot 13) \approx  size \cdot log_2(size) = O(size \cdot log_2(size))             
-	\end{multlined}
+	\begin{array}{cc}
+		f_{\text{худший}} = log_2(size) \cdot (2 + size \cdot 13) \approx  size \cdot log_2(size) = \\O(size \cdot log_2(size))             
+	\end{array}
 \end{equation}
 
-Трудоемкость в худшем и лучшем случае совпадает и равна $O(size \cdot log_2(size))$.
+Трудоемкость в худшем и лучшем случае равна $O(size \cdot log_2(size))$.

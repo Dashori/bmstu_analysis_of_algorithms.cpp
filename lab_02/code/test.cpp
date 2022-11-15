@@ -7,19 +7,19 @@
 using namespace std;
 using namespace std::chrono;
 
-#define REPEAT 200 
+#define REPEAT 100 
 
 int main()
 {
-    ofstream out("result.txt");
-    int myConst = 1;
+    ofstream out("resultEven.txt");
+    int myConst = 2;
 
-    for (int i = 2; i <= 502; i += myConst)
+    for (int i = 1; i <= 302; i += myConst)
     {
-        if (i == 102)
+        if (i == 103)
             myConst = 100;
 
-        auto start = steady_clock::now();
+        auto start = high_resolution_clock::now();
         auto res1 = duration_cast<microseconds>(start - start);
         auto res2 = duration_cast<microseconds>(start - start);
         auto res3 = duration_cast<microseconds>(start - start);
@@ -33,22 +33,22 @@ int main()
 
             MultiplicatoinMatrix temp(first, second);
 
-            start = steady_clock::now();
+            start = high_resolution_clock::now();
             Matrix a  = temp.standartMultiplication();
-            auto end = steady_clock::now();
-            auto elapsed = duration_cast<microseconds>(end - start);
+            auto end = high_resolution_clock::now();
+            // auto elapsed = duration_cast<microseconds>(end - start);
             res1 += duration_cast<microseconds>(end - start);
 
-            start = steady_clock::now();
+            start = high_resolution_clock::now();
             temp.grapeMultiplication();
-            end = steady_clock::now();
-            elapsed = duration_cast<microseconds>(end - start);
+            end = high_resolution_clock::now();
+            // elapsed = duration_cast<microseconds>(end - start);
             res2 += duration_cast<microseconds>(end - start);
 
-            start = steady_clock::now();
+            start = high_resolution_clock::now();
             temp.grapeMultiplicationPro();
-            end = steady_clock::now();
-            elapsed = duration_cast<microseconds>(end - start);
+            end = high_resolution_clock::now();
+            // elapsed = duration_cast<microseconds>(end - start);
             res3 += duration_cast<microseconds>(end - start);
         }
 

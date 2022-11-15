@@ -72,14 +72,14 @@ int main()
     cout << "Матрица:" << endl;
     resultGrapePro.printMatrix();
 
-    start = high_resolution_clock::now();
-    Matrix resultGrapePro2= temp.grapeMultiplicationPro2();
-    end = high_resolution_clock::now();
-    elapsed = duration_cast<microseconds>(end - start);
-    cout << "Оптимизированный дважды алгоритм Винограда." << endl;
-    cout << "Время: " << elapsed.count() << " (микросекунды)" << endl;
-    cout << "Матрица:" << endl;
-    resultGrapePro2.printMatrix();
+    // start = high_resolution_clock::now();
+    // Matrix resultGrapePro2= temp.grapeMultiplicationPro2();
+    // end = high_resolution_clock::now();
+    // elapsed = duration_cast<microseconds>(end - start);
+    // cout << "Оптимизированный дважды алгоритм Винограда." << endl;
+    // cout << "Время: " << elapsed.count() << " (микросекунды)" << endl;
+    // cout << "Матрица:" << endl;
+    // resultGrapePro2.printMatrix();
 
 //     auto now = system_clock::now();
 // time_t now_t = system_clock::to_time_t(now);

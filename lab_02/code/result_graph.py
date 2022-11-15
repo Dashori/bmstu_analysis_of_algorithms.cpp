@@ -22,7 +22,7 @@ while True:
 
 
 plot.ylabel("Время(микросекунды)")
-plot.xlabel("Размер массива")
+plot.xlabel("Размерность квадратной матрицы")
 plot.grid(True)
 
 plot.plot(index, basic, color = "red", label = "Стандартный")

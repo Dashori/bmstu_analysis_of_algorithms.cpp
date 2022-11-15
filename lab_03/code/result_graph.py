@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plot
 
-file = open("resultDegree.txt", "r") 
+file = open("result.txt", "r") 
 
 index = []
 merge = []
@@ -23,7 +23,7 @@ while True:
 
 
 plot.ylabel("Время(в микросекундах)")
-plot.xlabel("Размер массива")
+plot.xlabel("Количество элементов в массиве")
 plot.grid(True)
 
 plot.plot(index, merge, color = "red", label = "Слиянием")
@@ -32,5 +32,5 @@ plot.plot(index, bitton, color = "green", label = "Битонная")
 
 plot.legend(loc="upper left")
 
-plot.savefig("resultDegree.png")
+plot.savefig("result.png")
 
