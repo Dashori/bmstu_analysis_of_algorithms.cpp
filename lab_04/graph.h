@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <thread>
 
 #include <stdio.h>
 
@@ -16,16 +17,17 @@ class Graph
         Graph(const Graph &tempGraph);
 
         int inputMatrix();
+        int inputThreads();
         void printMatrix();
         void drawGraph();
         void simpleFWA();   // FWA = Floyd–Warshall algorithm
-        void parallelFWA();
+        void parallelFWA(int index);
+        void doParallel();
    
     private:
         int size;
+        int countThreads;
         vector<vector<int>> matrix;
-        // vector<vector<int>> matrixForSimple;
-
 };
 
 
