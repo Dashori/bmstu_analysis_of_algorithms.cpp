@@ -12,6 +12,7 @@ int main()
     cout << "Матрица смежности:\n";
     simpleGraph.printMatrix();
 
+    cout << "\nПоследовательный алгоритм:\n";
     auto start = high_resolution_clock::now();
     simpleGraph.simpleFWA();
     auto end = high_resolution_clock::now();
@@ -22,10 +23,10 @@ int main()
     cout << "Время: " << elapsed.count() << " (микросекунды)\n";
 
 
-    cout << "\nPARALLEL\n";
+    cout << "\nПараллельный алгоритм:\n";
     Graph parallelGraph(simpleGraph);
     
-    // simpleGraph.drawGraph();
+    simpleGraph.drawGraph();
 
     parallelGraph.inputThreads();
 

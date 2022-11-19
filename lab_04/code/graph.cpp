@@ -22,7 +22,7 @@ Graph::Graph(int tempSize) : size(tempSize)
 
 int Graph::inputMatrix()
 {
-    cout << "Введите количество вершин графа:";
+    cout << "Введите количество вершин графа: ";
     cin >> size;
 
     matrix.resize(size + 1);
