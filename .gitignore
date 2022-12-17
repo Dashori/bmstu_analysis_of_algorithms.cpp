@@ -9,3 +9,5 @@
 *.gz
 *.bbl
 *.blg
+
+.DS_store
