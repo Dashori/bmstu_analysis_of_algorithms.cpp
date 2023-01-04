@@ -1,0 +1,61 @@
+\section{Технологическая часть}
+
+\subsection{Требования к программному обеспечению}
+
+К программе предъявляется ряд требований:
+\begin{itemize}[label*=---]
+	\item стоимости путей должны быть целыми числами;
+	\item число городов должно быть больше 1;
+	\item число дней должно быть больше 0;
+	\item параметры муравьиного алгоритма должны быть вещественными неотрицательными числами;
+	\item матрица должна задавать неориентированный граф;
+	\item должно быть выдано сообщение об ошибке при некорректном вводе параметров.
+\end{itemize}
+
+\subsection{Средства реализации}
+
+В качестве языка программирования для реализации лабораторной работы был выбран Python~\cite{python}. Данный выбор обусловлен наличием методов для замера процессорного времени.
+
+Время работы реализованных алгоритмов было замерено с помощью библиотеки time~\cite{time}.
+
+\subsection{Реализация алгоритмов}
+
+В листингe \ref{lst:merge} приведена реализация алгоритма полного перебора.
+\begin{code}
+	\captionof{listing}{Реализация алгоритма полного перебора}
+	\label{lst:merge}
+	\inputminted
+	[
+	frame=single,
+	framerule=0.5pt,
+	framesep=20pt,
+	fontsize=\small,
+	tabsize=4,
+	linenos,
+	numbersep=5pt,
+	xleftmargin=10pt,
+	]
+	{text}
+	{code/pp.py}
+\end{code}
+
+В листингe \ref{lst:counting} приведена реализация муравьиного алгоритма.
+\pagebreak
+\begin{code}
+	\captionof{listing}{Реализация муравьиного алгоритма}
+	\label{lst:counting}
+	\inputminted
+	[
+	frame=single,
+	framerule=0.5pt,
+	framesep=20pt,
+	fontsize=\small,
+	tabsize=4,
+	linenos,
+	numbersep=5pt,
+	xleftmargin=10pt,
+	]
+	{text}
+	{code/myr.py}
+\end{code}
+
